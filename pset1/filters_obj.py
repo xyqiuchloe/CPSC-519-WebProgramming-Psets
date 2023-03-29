@@ -13,7 +13,7 @@ from table import Table
 
 # INITIALIZE CONSTANT
 DATABASE = 'file:lux.sqlite?mode=ro'
-FORMAT_FLAG = ["w", "w", "w", "w", "w", "p"] #what is this
+FORMAT_FLAG = ["w", "w", "w", "w", "w", "p"] 
 FORMAT_SEP = ","
 HEADER = ["ID", "Label", "Produced By", "Date", "Member of", "Classified As"]
 
@@ -67,7 +67,8 @@ def get_filtered_objects(filters):
         with connect(database_url, isolation_level=None,
         uri=True) as connection:
 
-            with closing(connection.cursor()) as cursor:
+            with closing(connection.cursor()) as cursor: # cursor is an object which helps to execute the query and fetch the records from the database. 
+                #The cursor plays a very important role in executing the query.
 
                 stmt_str = f"""
                             select objects.id,  objects.label, group_concat(distinct (temp1.name || ' ('||temp1.part||')' )) as agents_name ,temp1.date, 
