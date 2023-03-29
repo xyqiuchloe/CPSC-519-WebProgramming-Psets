@@ -15,7 +15,8 @@ import filters_obj
 def main():
     """ Function for standard input """
     parser = argparse.ArgumentParser(allow_abbrev=False)
-    #parser.add_argument('-d'#option that takes a value, metavar='dep'#)
+    #parser.add_argument('-d'#option that takes a value, 
+    # metavar = 'dep' #used to display, help = '' #shows when asked)
     parser.add_argument("-d", metavar = "dep",
     help = "dep show only those objects whose department label contains department")
     parser.add_argument("-a", metavar = "agt",
@@ -24,7 +25,7 @@ def main():
      help = "cls show only those objects classified with a classifier having a name containing cls")
     parser.add_argument("-l", metavar = "label",
     help = "label show only those objects whose label contains label")
-    try:
+    try: #try and except comes together
         args = parser.parse_args()
     except SystemExit:
         print("Please enter a valid command")
@@ -42,10 +43,6 @@ def main():
     filters = filters_obj.filter_term2(*arg_list)
 
     filters_obj.get_filtered_objects(filters)
-
-
-
-
 
 
 # ---------------------------------------------------------------------------------
